@@ -32,6 +32,8 @@ function startGame () {
   ) 
 
   addEventListener("click", checkForWin)
+  addEventListener("contextmenu", checkForWin)
+  
 
   // Don't remove this function call: it makes the game work!
   lib.initBoard()
