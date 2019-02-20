@@ -2,7 +2,7 @@ document.addEventListener('DOMContentLoaded', startGame)
 
 // Define your `board` object here!
 var board = {
-  cells: makeCells(5)
+  cells: makeCells(3)
 }
 
 function makeCells (numberOfCellsWide) {
@@ -22,6 +22,10 @@ function makeCells (numberOfCellsWide) {
 }
 
 function startGame () {
+  board.cells.forEach(function(element) {
+      element.surroundingMines = countSurroundingMines(element)
+    }
+  ) 
   // Don't remove this function call: it makes the game work!
   lib.initBoard()
 }
