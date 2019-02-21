@@ -46,10 +46,17 @@ function startGame () {
 // 1. Are all of the cells that are NOT mines visible?
 // 2. Are all of the mines marked?
 function checkForWin () {
-  console.log("Event Listener Working!")
-  // You can use this function call to declare a winner (once you've
-  // detected that they've won, that is!)
-  //   lib.displayMessage('You win!')
+  var cellCompletedCounter = 0;
+
+  board.cells.forEach(function (cell) {
+      if ((cell.isMine == true && cell.isMarked == true) || (cell.isMine == false && cell.hidden == false)) {
+        cellCompletedCounter++
+      } 
+    }
+  )
+  if (cellCompletedCounter == board.cells.length) {
+    lib.displayMessage('You win!')
+  }
 }
 
 // Define this function to count the number of mines around the cell
