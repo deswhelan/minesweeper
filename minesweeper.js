@@ -2,9 +2,10 @@ document.addEventListener('DOMContentLoaded', startGame)
 
 // Define your `board` object here!
 var board = {
-  cells: makeCells(3)
+  cells: makeCells(6)
 }
 
+// Create cells array
 function makeCells (numberOfCellsWide) {
   var cells = [];
   for (i = 0; i < numberOfCellsWide; i++) {
@@ -21,11 +22,30 @@ function makeCells (numberOfCellsWide) {
   return cells;
 }
 
+// Randomly assign mines to cells
+function getRandomInt (max) {
+  return Math.floor(Math.random()*Math.floor(max))
+}
+
+function makeMines () {
+  var mineCounter = 0;
+ 
+  while (mineCounter < board.cells.length/3) {
+    console.log(getRandomInt(board.cells.length))
+    board.cells[getRandomInt(board.cells.length)].isMine = true;
+
+    board.cells.forEach(function (cell) {
+      if(cell.isMine == true) {
+        mineCounter++; 
+      }
+    })
+  }
+}
+
 function startGame () {
-  board.cells[0].isMine = true;
-  board.cells[2].isMine = true;
-  board.cells[5].isMine = true;
-  
+
+  makeMines()
+
   board.cells.forEach(function(cell) {
       cell.surroundingMines = countSurroundingMines(cell)
     }
