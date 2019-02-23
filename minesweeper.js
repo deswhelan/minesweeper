@@ -86,12 +86,13 @@ function checkForWin () {
   }
 }
 
+// Ask player if they want to play again
 function playAgainPrompt () {
   setTimeout(function () {
     if (confirm("Play again?")) {
       location.reload()
     }
-  }, 750)
+  }, 500)
 }
 
 
@@ -106,4 +107,9 @@ function countSurroundingMines (cell) {
   )
   return mineCounter;
 }
+
+// add some sounds to the game
+
+var mineNemo = new Audio();
+mineNemo.src = "sounds/mineNemo.mp3"
 
