@@ -81,6 +81,7 @@ function checkAllCellsAreCompleted (cellCompletedCounter) {
 function checkForWin () {
   var cellCompletedCounter = 0;
   if (checkAllCellsAreCompleted(cellCompletedCounter) == board.cells.length) {
+    winner.play()
     lib.displayMessage('You win!')
     playAgainPrompt()
   }
@@ -108,8 +109,12 @@ function countSurroundingMines (cell) {
   return mineCounter;
 }
 
-// add some sounds to the game
-
+// add sounds to the game
 var mineNemo = new Audio();
 mineNemo.src = "sounds/mineNemo.mp3"
 
+var gameOver = new Audio();
+gameOver.src = "sounds/gameOver.mp3"
+
+var winner = new Audio();
+winner.src = "sounds/winner.mp3"
