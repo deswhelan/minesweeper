@@ -23,7 +23,6 @@ function makeCells (numberOfRowsAndCols) {
   return cells;
 }
 
-// Randomly assign mines to cells
 function getRandomInt (max) {
   return Math.floor(Math.random()*Math.floor(max))
 }
@@ -41,7 +40,7 @@ function countTotalMines (mineCounter) {
   return mineCounter;
 }
 
-function makeMines () {
+function plantMines () {
   var mineCounter = 0;
   // Choose how many mines you want here
   var maxMines = board.cells.length/4
@@ -56,34 +55,32 @@ function makeMines () {
 function assignSurroundingMinesValues () {
   board.cells.forEach(function(cell) {
     cell.surroundingMines = countSurroundingMines(cell)
-  }
-) 
+    }
+  ) 
 }
 
 function startGame () {
-  makeMines()
+  plantMines()
   assignSurroundingMinesValues()
   addEventListener("click", checkForWin)
   addEventListener("contextmenu", checkForWin)
-  
   // Don't remove this function call: it makes the game work!
   lib.initBoard()
 }
 
-// Define this function to look for a win condition:
-//
-// 1. Are all of the cells that are NOT mines visible?
-// 2. Are all of the mines marked?
+function checkAllCellsAreCompleted (cellCompletedCounter) {
+  board.cells.forEach(function (cell) {
+    if ((cell.isMine == true && cell.isMarked == true) || (cell.isMine == false && cell.hidden == false)) {
+      cellCompletedCounter++
+      } 
+    } 
+  )
+  return cellCompletedCounter;
+}
+
 function checkForWin () {
   var cellCompletedCounter = 0;
-
-  board.cells.forEach(function (cell) {
-      if ((cell.isMine == true && cell.isMarked == true) || (cell.isMine == false && cell.hidden == false)) {
-        cellCompletedCounter++
-      } 
-    }
-  )
-  if (cellCompletedCounter == board.cells.length) {
+  if (checkAllCellsAreCompleted(cellCompletedCounter) == board.cells.length) {
     lib.displayMessage('You win!')
   }
 }
