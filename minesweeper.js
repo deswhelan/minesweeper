@@ -2,15 +2,15 @@ document.addEventListener('DOMContentLoaded', startGame)
 
 // Define your `board` object here!
 var board = {
-  // Choose how many rows/columns here
+  // Choose number rows and columns here
   cells: makeCells(4)
 }
 
 // Create cells array
-function makeCells (numberOfCellsWide) {
+function makeCells (numberOfRowsAndCols) {
   var cells = [];
-  for (i = 0; i < numberOfCellsWide; i++) {
-    for (j = 0; j < numberOfCellsWide; j++) {
+  for (i = 0; i < numberOfRowsAndCols; i++) {
+    for (j = 0; j < numberOfRowsAndCols; j++) {
       cell = {
         row: i,
         col: j,
@@ -53,23 +53,21 @@ function makeMines () {
   console.log("Total mines: " + mineCounter)
 }
 
-function startGame () {
-
-  makeMines()
-
+function assignSurroundingMinesValues () {
   board.cells.forEach(function(cell) {
-      cell.surroundingMines = countSurroundingMines(cell)
-    }
-  ) 
+    cell.surroundingMines = countSurroundingMines(cell)
+  }
+) 
+}
 
+function startGame () {
+  makeMines()
+  assignSurroundingMinesValues()
   addEventListener("click", checkForWin)
   addEventListener("contextmenu", checkForWin)
   
-
   // Don't remove this function call: it makes the game work!
   lib.initBoard()
-
-  
 }
 
 // Define this function to look for a win condition:
