@@ -49,7 +49,6 @@ function plantMines () {
     plantRandomMine ();
     mineCounter = countTotalMines(mineCounter);
   }
-  console.log("Total mines: " + mineCounter)
 }
 
 function assignSurroundingMinesValues () {
@@ -95,7 +94,6 @@ function playAgainPrompt () {
     }
   }, 500)
 }
-
 
 function countSurroundingMines (cell) {
   var surroundingCells = lib.getSurroundingCells(cell.row, cell.col);
