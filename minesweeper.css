@@ -1,6 +1,6 @@
 html, body {
   height: 100%;
-  font-family: 'Open Sans', sans-serif
+  font-family: 'Open Sans', sans-serif;
 }
 
 body {
@@ -8,6 +8,7 @@ body {
   align-items: center;
   justify-content: flex-center;
   flex-direction: column;
+  background-image: url("https://www.pixelstalk.net/wp-content/uploads/2016/06/Ocean-Underwater-Wallpaper-HD-Free-Download.jpg");
 }
 
 #message, #notes {
@@ -17,7 +18,9 @@ body {
 }
 
 #message {
-  font-size: 1.5rem;
+  font-size: 2rem;
+  font-family: ;
+  color: white;
 }
 
 .board {
@@ -48,7 +51,7 @@ div.mine, div.mine:hover {
 }
 
 div.hidden {
-  background: #eee;
+  background: coral;
 }
 
 div.hidden:hover {
