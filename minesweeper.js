@@ -1,11 +1,11 @@
 document.addEventListener('DOMContentLoaded', startGame)
 
-var difficultyLevel = 3;
+var difficultyLevel = 4;
 
 // Define your `board` object here!
 var board = {
   // Choose number rows and columns here
-  cells: makeCells(3)
+  cells: makeCells(4)
 }
 
 // Create cells array
@@ -98,8 +98,8 @@ function checkForWin () {
   var cellCompletedCounter = 0;
   if (checkAllCellsAreCompleted(cellCompletedCounter) == board.cells.length) {
     winner.play()
-    lib.displayMessage('You win!')
-    playAgainPrompt()
+    document.querySelector('.board').innerHTML = '';
+    lib.displayMessage("<img src='https://secure.i.telegraph.co.uk/multimedia/archive/01767/findingnemoturtles_1767848i.jpg'>")
   }
 }
 
