@@ -3,7 +3,7 @@ document.addEventListener('DOMContentLoaded', startGame)
 // Define your `board` object here!
 var board = {
   // Choose number rows and columns here
-  cells: makeCells(5)
+  cells: makeCells(3)
 }
 
 // Create cells array
@@ -67,6 +67,12 @@ function startGame () {
   lib.initBoard()
 }
 
+function restartGame () {
+  board.cells = makeCells(3);
+  document.querySelector('.board').innerHTML = '';
+  startGame();
+}
+
 function checkAllCellsAreCompleted (cellCompletedCounter) {
   board.cells.forEach(function (cell) {
     if ((cell.isMine == true && cell.isMarked == true) || (cell.isMine == false && cell.hidden == false)) {
@@ -90,7 +96,7 @@ function checkForWin () {
 function playAgainPrompt () {
   setTimeout(function () {
     if (confirm("Play again?")) {
-      location.reload()
+      restartGame();
     }
   }, 500)
 }
