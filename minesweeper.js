@@ -99,7 +99,7 @@ function checkForWin () {
   if (checkAllCellsAreCompleted(cellCompletedCounter) == board.cells.length) {
     winner.play()
     document.querySelector('.board').innerHTML = '';
-    lib.displayMessage("<img src='https://secure.i.telegraph.co.uk/multimedia/archive/01767/findingnemoturtles_1767848i.jpg'>")
+    lib.displayMessage("<img src='https://media.giphy.com/media/cJLtigG6XUl44/giphy.gif'>")
   }
 }
 
