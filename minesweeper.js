@@ -98,7 +98,6 @@ function checkForWin () {
   var cellCompletedCounter = 0;
   if (checkAllCellsAreCompleted(cellCompletedCounter) == board.cells.length) {
     winner.play()
-    document.querySelector('.board').innerHTML = '';
     lib.displayMessage("<img src='https://media.giphy.com/media/cJLtigG6XUl44/giphy.gif'>")
   }
 }
