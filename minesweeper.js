@@ -1,5 +1,7 @@
 document.addEventListener('DOMContentLoaded', startGame)
 
+var difficultyLevel = 3;
+
 // Define your `board` object here!
 var board = {
   // Choose number rows and columns here
@@ -67,10 +69,19 @@ function startGame () {
   lib.initBoard()
 }
 
-function restartGame () {
-  board.cells = makeCells(3);
+function restartGame (chosenDifficulty) {
+  checkDifficulty(chosenDifficulty);
   document.querySelector('.board').innerHTML = '';
   startGame();
+}
+
+function checkDifficulty(chosenDifficulty) {
+  if(chosenDifficulty == 99){
+    board.cells = makeCells(difficultyLevel);
+  } else {
+    difficultyLevel = chosenDifficulty;
+    board.cells = makeCells(difficultyLevel);
+  }
 }
 
 function checkAllCellsAreCompleted (cellCompletedCounter) {
@@ -96,7 +107,7 @@ function checkForWin () {
 function playAgainPrompt () {
   setTimeout(function () {
     if (confirm("Play again?")) {
-      restartGame();
+      restartGame(99);
     }
   }, 500)
 }
